@@ -6,7 +6,7 @@ import {
   getDoc,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
 import { auth, db } from "../src/firebase-config.js";
-
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 const urlParams = new URLSearchParams(window.location.search);
 const vecinoId = urlParams.get("id");
 const vecinoInfo = document.getElementById("vecinoInfo");
