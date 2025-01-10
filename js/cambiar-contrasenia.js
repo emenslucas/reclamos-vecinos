@@ -5,7 +5,7 @@ import {
   updatePassword,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
-import { auth } from "firebase-config.js";
+import { auth } from "../src/firebase-config.js";
 
 // Agregar al inicio
 const checkAuth = async () => {
