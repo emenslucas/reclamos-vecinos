@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ver Reclamos</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script type="module" src="../js/ver-reclamos.js" defer></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="inicio.html" class="nav-link">Registrar Vecino</a>
+        <a href="buscar-vecinos.html" class="nav-link">Buscar Vecinos</a>
+        <a href="ver-reclamos.html" class="nav-link active">Ver Reclamos</a>
+        <a href="cambiar-contrasenia.html" class="nav-link"
+          >Cambiar Contraseña</a
+        >
+        <button id="logoutBtn" class="nav-link">Cerrar Sesión</button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1>Reclamos del Vecino</h1>
+
+      <!-- Información del vecino -->
+      <div id="vecino-info" class="vecino-info-card">
+        <!-- La información del vecino se cargará dinámicamente aquí -->
+      </div>
+
+      <!-- Barra de búsqueda para reclamos -->
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchReclamos"
+          placeholder="Buscar por número de reclamo, tipo, estado o descripción..."
+        />
+      </div>
+
+      <!-- Contenedor de reclamos -->
+      <div id="reclamos-container">
+        <!-- Los reclamos se cargarán dinámicamente aquí -->
+      </div>
+
+      <!-- Botón para volver a la búsqueda -->
+      <div class="actions-container">
+        <button
+          onclick="window.location.href='buscar-vecinos.html'"
+          class="btn-volver"
+        >
+          Volver a Búsqueda
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

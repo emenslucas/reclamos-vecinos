@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuevo Reclamo</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script type="module" src="../js/nuevo-reclamo.js" defer></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="inicio.html" class="nav-link">Registrar Vecino</a>
+        <a href="buscar-vecinos.html" class="nav-link">Buscar Vecinos</a>
+        <a href="ver-reclamos.html" class="nav-link">Ver Reclamos</a>
+        <a href="cambiar-contrasenia.html" class="nav-link"
+          >Cambiar Contraseña</a
+        >
+        <button id="logoutBtn" class="nav-link">Cerrar Sesión</button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1>Nuevo Reclamo</h1>
+      <div id="vecinoInfo" class="vecino-info"></div>
+      <form id="reclamoForm">
+        <fieldset>
+          <legend>Datos del Reclamo</legend>
+          <label for="nroReclamo">Nro de Reclamo:</label>
+          <input type="text" id="nroReclamo" required />
+
+          <label for="fecha">Fecha:</label>
+          <input type="date" id="fecha" required />
+
+          <label for="tipoReclamo">Tipo de Reclamo:</label>
+          <select id="tipoReclamo" required>
+            <option value="Presencia Policial">Presencia Policial</option>
+            <option value="Cámaras">Cámaras</option>
+            <option value="Senderos Seguros">Senderos Seguros</option>
+            <option value="Luminaria">Luminaria</option>
+            <option value="Narcomenudeo">Narcomenudeo</option>
+            <option value="Casas Tomadas">Casas Tomadas</option>
+            <option value="P- Sit de Calle">P- Sit de Calle</option>
+            <option value="Denuncias">Denuncias</option>
+            <option value="Prostitución">Prostitución</option>
+            <option value="Tránsito">Tránsito</option>
+            <option value="Ruidos Molestos">Ruidos Molestos</option>
+            <option value="Poda">Poda</option>
+            <option value="Vehículos Abandonados">Vehículos Abandonados</option>
+            <option value="Residuos">Residuos</option>
+            <option value="Espacio Público">Espacio Público</option>
+            <option value="Ranchadas">Ranchadas</option>
+            <option value="Información">Información</option>
+            <option value="Varios">Varios</option>
+            <option value="Arreglos de Seg">Arreglos de Seg</option>
+            <option value="AGC">AGC</option>
+          </select>
+
+          <label for="descripcion">Descripción:</label>
+          <textarea id="descripcion" required></textarea>
+
+          <label for="estado">Estado del Reclamo:</label>
+          <select id="estado" required>
+            <option value="Resuelto">Resuelto</option>
+            <option value="Pendiente de Respuesta">
+              Pendiente de Respuesta
+            </option>
+            <option value="Derivado">Derivado</option>
+            <option value="No tratado">No tratado</option>
+          </select>
+
+          <label for="derivado">Derivado:</label>
+          <input type="checkbox" id="derivadoCheck" />
+          <input type="text" id="derivado" disabled />
+        </fieldset>
+
+        <button type="submit">Guardar Reclamo</button>
+      </form>
+    </div>
+  </body>
+</html>

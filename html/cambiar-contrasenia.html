@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cambiar Contraseña</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script type="module" src="../js/cambiar-contrasenia.js" defer></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="inicio.html" class="nav-link">Registrar Vecino</a>
+        <a href="buscar-vecinos.html" class="nav-link">Buscar Vecinos</a>
+        <a href="ver-reclamos.html" class="nav-link">Ver Reclamos</a>
+        <a href="cambiar-contrasenia.html" class="nav-link active"
+          >Cambiar Contraseña</a
+        >
+        <button id="logoutBtn" class="nav-link">Cerrar Sesión</button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1>Cambiar Contraseña</h1>
+      <form id="passwordForm">
+        <fieldset>
+          <legend>Nueva Contraseña</legend>
+          <label for="currentPassword">Contraseña Actual:</label>
+          <input type="password" id="currentPassword" required />
+
+          <label for="newPassword">Nueva Contraseña:</label>
+          <input type="password" id="newPassword" required />
+
+          <label for="confirmPassword">Confirmar Nueva Contraseña:</label>
+          <input type="password" id="confirmPassword" required />
+        </fieldset>
+
+        <button type="submit">Cambiar Contraseña</button>
+      </form>
+    </div>
+  </body>
+</html>

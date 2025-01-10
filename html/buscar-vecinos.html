@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buscar Vecinos</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script type="module" src="../js/buscar-vecinos.js" defer></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="inicio.html" class="nav-link">Registrar Vecino</a>
+        <a href="buscar-vecinos.html" class="nav-link active">Buscar Vecinos</a>
+        <a href="ver-reclamos.html" class="nav-link">Ver Reclamos</a>
+        <a href="cambiar-contrasenia.html" class="nav-link"
+          >Cambiar Contraseña</a
+        >
+        <button id="logoutBtn" class="nav-link">Cerrar Sesión</button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1>Buscar Vecinos</h1>
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Buscar por nombre, apellido o email..."
+        />
+      </div>
+      <div id="resultados" class="resultados"></div>
+    </div>
+  </body>
+</html>

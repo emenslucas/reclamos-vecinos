@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de Vecinos</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script type="module" src="../js/app.js" defer></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="inicio.html" class="nav-link active">Registrar Vecino</a>
+        <a href="buscar-vecinos.html" class="nav-link">Buscar Vecinos</a>
+        <a href="ver-reclamos.html" class="nav-link">Ver Reclamos</a>
+        <a href="cambiar-contrasenia.html" class="nav-link"
+          >Cambiar Contraseña</a
+        >
+        <button id="logoutBtn" class="nav-link">Cerrar Sesión</button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1>Registro de Vecinos</h1>
+      <form id="vecinoForm">
+        <fieldset>
+          <legend>Datos del Vecino</legend>
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" required />
+
+          <label for="apellido">Apellido:</label>
+          <input type="text" id="apellido" required />
+
+          <label for="telefono">Teléfono:</label>
+          <input type="text" id="telefono" required />
+
+          <label for="mail">Email:</label>
+          <input type="email" id="mail" required />
+
+          <label for="barrio">Barrio:</label>
+          <input type="text" id="barrio" required />
+        </fieldset>
+
+        <button type="submit">Registrar Vecino</button>
+      </form>
+    </div>
+  </body>
+</html>
