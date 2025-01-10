@@ -1,3 +1,4 @@
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import {
   collection,
   deleteDoc,
@@ -5,8 +6,7 @@ import {
   getDocs,
   query,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
-import { auth, db } from "./firebase-config.js";
+import { auth, db } from "../src/firebase-config.js";
 
 // Funciones de seguridad
 const checkAuth = async () => {
@@ -16,8 +16,8 @@ const checkAuth = async () => {
       if (user) {
         resolve(user);
       } else {
-        window.location.href = '../index.html';
-        reject('Usuario no autenticado');
+        window.location.href = "../index.html";
+        reject("Usuario no autenticado");
       }
     });
   });
@@ -27,11 +27,11 @@ const sanitizeInput = (input) => {
   return input
     .replace(/[&<>"']/g, (char) => {
       const entities = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;'
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
       };
       return entities[char];
     })
@@ -42,11 +42,14 @@ const validateVecinoData = (data) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^[0-9+ -]{8,15}$/;
 
-  if (!data.nombre || data.nombre.length < 2) throw new Error('Nombre inválido');
-  if (!data.apellido || data.apellido.length < 2) throw new Error('Apellido inválido');
-  if (!emailRegex.test(data.mail)) throw new Error('Email inválido');
-  if (!phoneRegex.test(data.telefono)) throw new Error('Teléfono inválido');
-  if (!data.barrio || data.barrio.length < 2) throw new Error('Barrio inválido');
+  if (!data.nombre || data.nombre.length < 2)
+    throw new Error("Nombre inválido");
+  if (!data.apellido || data.apellido.length < 2)
+    throw new Error("Apellido inválido");
+  if (!emailRegex.test(data.mail)) throw new Error("Email inválido");
+  if (!phoneRegex.test(data.telefono)) throw new Error("Teléfono inválido");
+  if (!data.barrio || data.barrio.length < 2)
+    throw new Error("Barrio inválido");
 
   return {
     ...data,
@@ -54,7 +57,7 @@ const validateVecinoData = (data) => {
     apellido: sanitizeInput(data.apellido),
     mail: sanitizeInput(data.mail),
     telefono: sanitizeInput(data.telefono),
-    barrio: sanitizeInput(data.barrio)
+    barrio: sanitizeInput(data.barrio),
   };
 };
 
@@ -81,13 +84,14 @@ async function cargarVecinos() {
         apellido: sanitizeInput(vecinoData.apellido),
         mail: sanitizeInput(vecinoData.mail),
         telefono: sanitizeInput(vecinoData.telefono),
-        barrio: sanitizeInput(vecinoData.barrio)
+        barrio: sanitizeInput(vecinoData.barrio),
       });
     });
     mostrarResultados(vecinos);
   } catch (error) {
     console.error("Error al cargar vecinos:", error);
-    resultados.innerHTML = "<p>Error al cargar los vecinos. Intente nuevamente.</p>";
+    resultados.innerHTML =
+      "<p>Error al cargar los vecinos. Intente nuevamente.</p>";
   }
 }
 
@@ -95,10 +99,14 @@ async function cargarVecinos() {
 async function eliminarVecino(vecinoId) {
   try {
     await checkAuth(); // Verificar autenticación antes de eliminar
-    
-    if (!vecinoId) throw new Error('ID de vecino inválido');
-    
-    if (confirm("¿Está seguro que desea eliminar este vecino? Esta acción no se puede deshacer.")) {
+
+    if (!vecinoId) throw new Error("ID de vecino inválido");
+
+    if (
+      confirm(
+        "¿Está seguro que desea eliminar este vecino? Esta acción no se puede deshacer."
+      )
+    ) {
       await deleteDoc(doc(db, "vecinos", vecinoId));
       alert("Vecino eliminado exitosamente");
       await cargarVecinos(); // Recargar la lista
@@ -137,9 +145,9 @@ function mostrarResultados(vecinosFiltrados) {
     // Event listeners para los botones
     card.querySelector(".btn-nuevo-reclamo").addEventListener("click", () => {
       const params = new URLSearchParams();
-      params.append('id', vecino.id);
-      params.append('nombre', sanitizeInput(vecino.nombre));
-      params.append('apellido', sanitizeInput(vecino.apellido));
+      params.append("id", vecino.id);
+      params.append("nombre", sanitizeInput(vecino.nombre));
+      params.append("apellido", sanitizeInput(vecino.apellido));
       window.location.href = `nuevo-reclamo.html?${params.toString()}`;
     });
 

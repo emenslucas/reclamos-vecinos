@@ -5,7 +5,7 @@ import {
   doc,
   getDoc,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-import { auth, db } from "./firebase-config.js";
+import { auth, db } from "../src/firebase-config.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const vecinoId = urlParams.get("id");
@@ -19,20 +19,20 @@ const checkAuth = async () => {
       if (user) {
         resolve(user);
       } else {
-        window.location.href = '../index.html';
-        reject('Usuario no autenticado');
+        window.location.href = "../index.html";
+        reject("Usuario no autenticado");
       }
     });
   });
 };
 
 // Llamar al inicio antes de cualquier operación
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener("DOMContentLoaded", async () => {
   try {
     await checkAuth();
     // Aquí va el resto del código existente
   } catch (error) {
-    console.error('Error de autenticación:', error);
+    console.error("Error de autenticación:", error);
   }
 });
 

@@ -3,7 +3,7 @@ import {
   addDoc,
   collection,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-import { auth, db } from "./firebase-config.js";
+import { auth, db } from "../src/firebase-config.js";
 
 // Agregar al inicio
 const checkAuth = async () => {
@@ -13,20 +13,20 @@ const checkAuth = async () => {
       if (user) {
         resolve(user);
       } else {
-        window.location.href = '../index.html';
-        reject('Usuario no autenticado');
+        window.location.href = "../index.html";
+        reject("Usuario no autenticado");
       }
     });
   });
 };
 
 // Llamar al inicio antes de cualquier operación
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener("DOMContentLoaded", async () => {
   try {
     await checkAuth();
     // Aquí va el resto del código existente
   } catch (error) {
-    console.error('Error de autenticación:', error);
+    console.error("Error de autenticación:", error);
   }
 });
 
@@ -34,11 +34,11 @@ const sanitizeInput = (input) => {
   return input
     .replace(/[&<>"']/g, (char) => {
       const entities = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;'
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
       };
       return entities[char];
     })
@@ -50,11 +50,14 @@ const validateVecinoData = (data) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^[0-9+ -]{8,15}$/;
 
-  if (!data.nombre || data.nombre.length < 2) throw new Error('Nombre inválido');
-  if (!data.apellido || data.apellido.length < 2) throw new Error('Apellido inválido');
-  if (!emailRegex.test(data.mail)) throw new Error('Email inválido');
-  if (!phoneRegex.test(data.telefono)) throw new Error('Teléfono inválido');
-  if (!data.barrio || data.barrio.length < 2) throw new Error('Barrio inválido');
+  if (!data.nombre || data.nombre.length < 2)
+    throw new Error("Nombre inválido");
+  if (!data.apellido || data.apellido.length < 2)
+    throw new Error("Apellido inválido");
+  if (!emailRegex.test(data.mail)) throw new Error("Email inválido");
+  if (!phoneRegex.test(data.telefono)) throw new Error("Teléfono inválido");
+  if (!data.barrio || data.barrio.length < 2)
+    throw new Error("Barrio inválido");
 
   return {
     ...data,
@@ -62,7 +65,7 @@ const validateVecinoData = (data) => {
     apellido: sanitizeInput(data.apellido),
     mail: sanitizeInput(data.mail),
     telefono: sanitizeInput(data.telefono),
-    barrio: sanitizeInput(data.barrio)
+    barrio: sanitizeInput(data.barrio),
   };
 };
 

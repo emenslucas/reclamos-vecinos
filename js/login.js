@@ -2,7 +2,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
-import { auth } from "./firebase-config.js";
+import { auth } from "../src/firebase-config.js";
 
 // Manejar el evento de submit del formulario
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
